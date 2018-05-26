@@ -1,0 +1,31 @@
+<H1>
+ Proof Of Existence (<span id="networkName"></span>)
+</H1>
+<h4>
+  <p>Proof of Existence is one of basic Blockchain services</p>
+  <p>It is an online service that verifies the existence of computer files, or any arbitrary statements
+	as of a specific time via timestamped transactions in the blockchain, without revealing content of those resources</p>
+	<p> Content You provide must be unique, if what You provide was submited before transaction will fail</p>
+	
+   <p> What it can be used for? </p>
+   <ul>
+   <li> You can secretly put to the blockchain You predictions and reveal them when they will become true</li>
+   <li> You can run a lottery, by putting proof of secret numbers </li>
+   <li> You can put descriptions of Your inventions to prove You where first who invented it</li>
+   </ul>
+</h4>
+<p>Put here what You want to prove</p>
+<textarea id="txtToProve" rows="4" cols="50" placeholder="Peggy Sue will be my wife in 5 years"></textarea>
+<p>Or Select file</p>
+<input type="file" id="myFile" multiple size="50">
+
+<div id="proofVerification" style="display:none">
+First time stated at <span id="dateOfFirstOccurence">24.01.2017</span> by <span id="addressOfAuthor">0x56947aC048452f75A64e2411CA140336cF939f7D</span>
+</div>
+<div id="proofVerificationFail" style="display:none">
+Prove not found
+</div>
+<div style="margin:30px">
+	<a class="btn" id="saveProve" href="javascript:void(0);">Save Prove</a>
+	<a class="btn" id="verifyProve" href="javascript:void(0);">Verify Prove</a>
+</div>

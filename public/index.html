@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to POA DApps</title>
+  <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+  <p>
+  This website is my set of PoA Network DApps, I will extend this list from time to time, so watch carefully.
+  
+  If You like what I'm doing. 
+  </p>
+	<a class="btn" id="runKing" href="javascript:PoaDApp.openApp('kingApp');">POA King</a>
+	<a class="btn" id="runPoE" href="javascript:PoaDApp.openApp('proofOfExistence');">Proof Of Existence</a>
+	<div id="appContent">
+	
+	</div>
+	<script>
+	(function(){
+	
+		var setText = function(id, value) {
+
+		  var el = document.getElementById(id);
+		  if (el !== null) {
+			el.innerHTML = value;
+		  }
+		}
+		window.PoaDApp = (typeof window.PoaDApp === 'undefined') ? {} : window.PoaDApp;
+		window.PoaDApp.openApp = (typeof window.PoaDApp.openApp === 'undefined') ? function(folder){
+		var xhr = new XMLHttpRequest();
+		var xhr2 = new XMLHttpRequest();
+		var app = {
+				
+				isReady:function(){
+					return app.script!==undefined && app.html!==undefined;
+				}
+			}
+			xhr.onload = function() {
+				if (this.status === 200) {
+					if(this.responseURL.indexOf('.js')!==-1){
+						app.script = this.responseText;
+					}
+					if(this.responseURL.indexOf('.html')!==-1){
+						app.html = this.responseText;
+					}
+					if(app.isReady()){
+						//put content to appContent
+						setText('appContent',app.html);
+						//run script using eval
+						eval(app.script);
+					};
+				}
+				else {
+					alert('Request failed.  Returned status of ' + xhr.status);
+				}
+			};
+			xhr2.onload = xhr.onload;
+			
+			xhr.open('GET', folder+"/"+'app.js');
+			xhr.send();
+			xhr2.open('GET', folder+"/"+'app.html');
+			xhr2.send();
+		} : window.PoaDApp.openApp ;
+	}());
+	</script>
+  </body>
+</html>
